@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- 원래 보통 css 링크 걸어줬던 것처럼 하면 나중에 배포가 됐을때 경로가 달라지는 경우가 많음.
+   그래서 href를 저런 식으로 걸어주는 거임. -->
+</head>
+<body>
+    <h1>name : {{ name }} </h1> 
+    <!-- 이렇게 중괄호 두개 안에다가 변수명을 써주면 주소로 보낸 값을 출력할 수 있음. -->
+</body>
+</html>

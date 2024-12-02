@@ -1,0 +1,23 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{{ url_for('crud.static', filename='style.css') }}">
+  그냥 static이라고 하면 또 충돌이 날 수 있기 때문에 경로를 좀 더 정확히 crud.static이라고 써준거임. -->
+
+  {% extends "crud/base.html" %}
+  <!-- 공통 템플릿을 상속해주는 거임. -->
+  {% block title %}index페이지{% endblock %}
+  <!-- 이렇게 하면 모든 페이지마다 페이지 제목 바꿀 수 있음. -->
+
+  {% block content %}
+    <h1>CRUD Index Page</h1>
+    <a href="{{ url_for('crud.create_user') }}">신규 회원 등록</a>
+    {% for user in users %}
+      <p>
+        id: {{ user.id }}, username : {{user.username}}, email : {{ user.email }}
+      </p>
+    {% endfor %}
+  {% endblock %}

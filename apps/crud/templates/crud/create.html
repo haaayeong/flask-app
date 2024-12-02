@@ -1,0 +1,41 @@
+{% extends "crud/base.html" %}
+{% block title %}회원가입{% endblock %}
+
+{% block content %}
+  <h1>회원가입 페이지</h1>
+  <form action="{{ url_for('crud.create_user') }}", method="post" novalidate>
+    <!-- novalidate를 위에다가 넣어주면 유효성 검사 안 해줌. 그냥 넘어갈 수 있음. -->
+    <!-- url_for는 함수이름을 쓰는 거임. 그래서 post를 저 함수로 넘겨줘서 저 함수가 받는 거임.-->
+    {{ form.csrf_token }}
+    <!-- 위에처럼 저렇게만 해주면 따로 토큰 설정하고 hidden으로 바꿔주고 할 필요없이 자동으로 토큰이 hidden으로 만들어져서 들어감. -->
+    <div>
+      {{ form.username.label }}
+      {{ form.username(placeholder="사용자명을 입력하세요") }}
+      <!-- 위에처럼 적으니까 진짜 input 태그가 생김. -->
+    </div>
+    {% for error in form.username.errors %}
+      <span style="color: red;"> {{ error }} </span>
+    {% endfor %}
+
+    <div>
+      {{ form.email.label }}
+      {{ form.email(placeholder="메일주소를 입력하세요") }}
+    </div>
+    {% for error in form.email.errors %}
+      <span style="color: red;"> {{ error }} </span>
+    {% endfor %}
+
+    <div>
+      {{ form.password.label }}
+      {{ form.password(placeholder="비밀번호를 입력하세요") }}
+    </div>
+    {% for error in form.password.errors %}
+      <span style="color: red;"> {{ error }} </span>
+    {% endfor %}
+
+    <div>
+      {{ form.submit() }}
+    </div>
+
+  </form>
+{% endblock %}
